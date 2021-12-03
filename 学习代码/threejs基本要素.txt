@@ -1,0 +1,13 @@
+三大组件：
+场景、相机、渲染器
+var scene = new THREE.Scene();  // 场景
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);// 透视相机
+var renderer = new THREE.WebGLRenderer();   // 渲染器
+renderer.setSize(window.innerWidth, window.innerHeight);    // 设置渲染器的大小为窗口的内宽度，也就是内容区的宽度
+document.body.appendChild(renderer.domElement);
+场景只有一种，在Three.js中存在多种相机，渲染器决定了渲染结果应该画在页面的什么元素上面，以及怎么绘制
+
+三者关系总结就是：
+Three.js中的场景是一个物体的容器，开发者可以将需要的角色放入场景中，例如苹果，葡萄。同时，角色自身也管理着其在场景中的位置。
+相机的作用就是面对场景，在场景中取一个合适的景，把它拍下来。
+渲染器的作用就是将相机拍摄下来的图片，放到浏览器中去显示

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" lang="en">
+    <title>Three.js画线</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script src="./three.js"></script>
+    <script>
+        // 新建一个渲染器
+        let renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+        //新建一个相机
+        let camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 500);
+        camera.position.set(0, 0, 100);
+        camera.lookAt(0, 0, 0);
+        // 新建一个场景
+        let scene = new THREE.Scene();
+        let material = new THREE.LineBasicMaterial({
+            color: 0x0000ff
+        });
+        // 新建一个几何体来保存点
+        let geometry = new THREE.Geometry();
+        geometry.vertices.push(new THREE.Vector3(-10, 0, 0));
+        geometry.vertices.push(new THREE.Vector3(0, 10, 0));
+        geometry.vertices.push(new THREE.Vector3(10, 0, 0));
+        geometry.vertices.push(new THREE.Vector3(-10, 0, 0));
+        // 新建直线，通过THREE.LINE进行创建，参数为上面生成的几何体、材质
+        let line = new THREE.Line(geometry, material);
+        // 将生成的线添加到场景中
+        scene.add(line);
+        // 渲染出来
+        renderer.render(scene, camera);
+    </script>
+</body>
+
+</html>

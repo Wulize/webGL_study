@@ -1,0 +1,24 @@
+坐标系的问题：
+	Three.js使用的是右手坐标系，在Threejs中，x轴正方向向右，y轴正方向向上，z轴由屏幕从里向外。
+在Three.js中定义一个点：
+空间几何中点使用向量来进行表示，因此在Three.js中也是使用向量来进行表示的。
+THREE.Vector3 = function ( x, y, z ) {
+this.x = x || 0;
+this.y = y || 0;
+this.z = z || 0;
+};
+
+var geometry = new THREE.Geometry();
+声明一个几何体，几何体里面有一个vertices变量，可以用来存放点。
+定义一种线条的材质，使用THREE.LineBasicMaterial类型来定义，它接受一个集合作为参数，其原型如下：
+LineBasicMaterial( parameters )
+Parameters是一个定义材质外观的对象，它包含多个属性来定义材质，这些属性是：
+Color：线条的颜色，用16进制来表示，默认的颜色是白色。
+Linewidth：线条的宽度，默认时候1个单位宽度。
+Linecap：线条两端的外观，默认是圆角端点，当线条较粗的时候才看得出效果，如果线条很细，那么你几乎看不出效果了。
+Linejoin：两个线条的连接点处的外观，默认是“round”，表示圆角。
+VertexColors：定义线条材质是否使用顶点颜色，这是一个boolean值。意思是，线条各部分的颜色会根据顶点的颜色来进行插值。
+Fog：定义材质的颜色是否受全局雾效的影响。
+
+定义线条，使用THREE.Line类，代码如下所示：
+var line = new THREE.Line( geometry, material, THREE.LinePieces );
