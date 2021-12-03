@@ -1,1 +1,1 @@
-# wedGL_study
+# webGL_study
